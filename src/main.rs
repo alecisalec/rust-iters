@@ -22,6 +22,27 @@ fn print_elements_slice(el : &[String]){
 
 }
 
+fn to_uppercase(el : &[String]) -> Vec<String>{
+
+    return el.iter()
+        .map(|el| {
+            el.to_uppercase()
+        })
+        .collect()
+}
+
+fn explode(el: &[String]) -> Vec<Vec<String>>{
+
+    el.iter()
+    .map(|el|{
+         el.chars().map(|c| {
+            c.to_string()
+        }).collect()
+    })
+    .collect()
+
+}
+
 
 fn shorten_strings(el : &mut [String]){
 
@@ -31,6 +52,8 @@ fn shorten_strings(el : &mut [String]){
 
     println!("{:#?}", el)
 }
+
+
 
 
 
@@ -46,5 +69,10 @@ fn main() {
 
     shorten_strings(&mut colors2);
 
+    let upper_colors = to_uppercase(&colors);
+
+    println!("{:#?}", upper_colors);
+
+    println!("{:#?}", explode(&colors[1..colors.len()]));
 
 }
